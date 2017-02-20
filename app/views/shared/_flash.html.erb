@@ -1,0 +1,16 @@
+<br>
+<% if flash[:error] %>
+
+  <div class="alert alert-danger" role="alert">
+    <% flash[:error].each do |error_type| %>
+      <ul>
+        <li> <%= error_type %> </li>
+      </ul>
+    <% end %>
+  </div>
+
+<% elsif flash[:success] %>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:success] %>
+  </div>
+<% end %>
