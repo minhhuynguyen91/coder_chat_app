@@ -12,7 +12,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th> From </th>
+          <th> To </th>
           <th> Subject </th>
           <th> Time </th>
         </tr>
@@ -20,9 +20,9 @@
       <tbody>
         <% @sent_messages.each do |sent_message| %>
           <tr>
-            <td> <%= User.find_by_id(inbox_message.recipient_id).email %> </td>
-            <td> <%= inbox_message.subject %> </td>
-            <td> <%= inbox_message.created_at %> </td>
+            <td> <%= User.find_by_id(sent_message.recipient_id).email %> </td>
+            <td> <%= sent_message.subject %> </td>
+            <td> <%= sent_message.created_at %> </td>
           </tr>
         <% end %>
       </tbody>

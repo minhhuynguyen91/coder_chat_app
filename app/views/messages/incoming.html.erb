@@ -21,7 +21,6 @@
       <tbody>
         <% @inbox_messages.each do |inbox_message| %>
           <tr>
-            
             <td> <%= User.find_by_id(inbox_message.sender_id).email %> </td>
             <td> <%= inbox_message.subject %> </td>
             <td> <%= inbox_message.created_at %> </td>
