@@ -2,11 +2,11 @@
 <% if flash[:error] %>
 
   <div class="alert alert-danger" role="alert">
+    <ul>
     <% flash[:error].each do |error_type| %>
-      <ul>
-        <li> <%= error_type %> </li>
-      </ul>
+      <li> <%= error_type %> </li>
     <% end %>
+    </ul>
   </div>
 
 <% elsif flash[:success] %>

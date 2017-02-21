@@ -3,12 +3,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if @user = User.find_by_username(params[:username]) and @user.authenticate(params[:password])
+    if @user = User.find_by(:email => params[:email]) and @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:success] = "Sign in successfully"
       redirect_to root_path
     else
-      flash[:error] = "Invalid username or password"
+      flash.now[:error] = ["Invalid username or password"]
       render 'new'
     end
   end
