@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-4">
+    <ul class="list-group">
+      <li class="list-group-item"> <%= link_to 'Inbox', incoming_messages_path, {:style => 'color:black;'} %> </li>
+      <li class="list-group-item active"> <%= link_to 'Sent', sent_messages_path, {:style => 'color:black;'} %> </li>
+    </ul>
+  </div>
+  
+  <div class="col-8">
+    <h2> Sent </h2>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th> From </th>
+          <th> Subject </th>
+          <th> Time </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sent_messages.each do |sent_message| %>
+          <tr>
+            <td> <%= User.find_by_id(inbox_message.recipient_id).email %> </td>
+            <td> <%= inbox_message.subject %> </td>
+            <td> <%= inbox_message.created_at %> </td>
+          </tr>
+        <% end %>
+      </tbody>
+      
+    </table>
+  </div>
+</div>

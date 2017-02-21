@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20170221064256) do
   enable_extension "plpgsql"
 
   create_table "messages", force: :cascade do |t|
+    t.string   "subject"
     t.text     "content"
     t.integer  "sender_id"
     t.integer  "recipient_id"
