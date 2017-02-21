@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
 
   def create
     if @user = User.find_by_username(params[:username]) and @user.authenticate(params[:password])
-
       session[:user_id] = @user.id
       flash[:success] = "Sign in successfully"
       redirect_to root_path
