@@ -24,6 +24,11 @@
             <td> <%= User.find_by_id(inbox_message.sender_id).email %> </td>
             <td> <%= inbox_message.subject %> </td>
             <td> <%= inbox_message.created_at %> </td>
+            <% if inbox_message.read_at.nil? %>
+              <td> <%= link_to 'Unread', incoming_messages_path(:message_id => inbox_message.id) %> </td>
+            <% else %>
+              <td> <%= inbox_message.read_at.strftime("%d/%m/%Y %H:%M") %> </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

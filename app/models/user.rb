@@ -11,6 +11,6 @@ class User < ApplicationRecord
     has_many :received_messages, class_name: 'Message', foreign_key: 'recipient_id'
 
     def unread_messages
-      #received_messages.where(read_at: nil)
+      received_messages.where(read_at: nil)
     end
 end

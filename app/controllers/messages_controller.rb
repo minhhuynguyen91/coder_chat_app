@@ -14,6 +14,11 @@ class MessagesController < ApplicationController
   
   def incoming
     @inbox_messages = current_user.received_messages.order(:created_at => :desc)
+    if params[:message_id]
+      read_message = Message.find_by(:id => params[:message_id])
+      read_message.read_at = Time.now
+      read_message.save
+    end
   end
   
   def sent
