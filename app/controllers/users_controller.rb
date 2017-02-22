@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_signin, only: [:show, :index]
+
   def show
     
   end
@@ -17,7 +19,10 @@ class UsersController < ApplicationController
       flash.now[:error] = @user.errors.full_messages
       render 'new'
     end
-    
+  end
+
+  def index
+    @users = User.where.not(:id => current_user.id)
   end
   
   private
