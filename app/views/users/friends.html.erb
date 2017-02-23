@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-4">
+    <ul class="list-group">
+      <li class="list-group-item"> <%= link_to 'Users', users_path, {:style => 'color:black;'} %> </li>
+      <li class="list-group-item active"> <%= link_to 'Friends', friends_users_path, {:style => 'color:black;'} %> </li>
+    </ul>
+  </div>
+  
+  <div class="col-8">
+    <h2> Friends </h2>
+
+    <div class="card-columns" style="font-size: 0.8em; text-align: center">
+    <% current_user.friend_list_ids.each do |friend| %>
+      <div class="card">  
+        <%= image_tag("http://placehold.it/128?text=?", alt: "text", :class => "card-img-top")%>     
+        <div class="card-block">
+          <div style="word-break: break-word"> <%= User.find_by_id(friend).email %>  </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

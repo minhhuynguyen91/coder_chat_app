@@ -2,7 +2,14 @@ Rails.application.routes.draw do
 
   root 'home_pages#index'
 
-  resources :users
+  resources :users do
+    collection do
+      get 'add_friend'
+      get 'remove_friend'
+      get 'friends'
+    end
+  end
+    
   resources :messages do
     collection do 
       get 'incoming'

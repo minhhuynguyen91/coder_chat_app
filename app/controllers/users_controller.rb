@@ -24,6 +24,25 @@ class UsersController < ApplicationController
   def index
     @users = User.where.not(:id => current_user.id)
   end
+
+  def friends
+    
+  end
+
+  def add_friend
+    user = current_user
+    user.friend_list_ids.push(params[:id].to_i)
+    user.save
+    redirect_to users_path
+  end
+
+  def remove_friend
+    user = current_user
+    user.friend_list_ids = user.friend_list_ids - [params[:id].to_i]
+    user.save
+    redirect_to users_path
+  end
+
   
   private
     def user_params
