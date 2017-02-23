@@ -1,5 +1,7 @@
 <div class="row">
   <div class="col-4">
+    <p> <%= link_to 'New messages', new_message_path, class: 'btn btn-secondary'  %> </p>
+
     <ul class="list-group">
       <li class="list-group-item active"> <%= link_to 'Inbox', incoming_messages_path, {:style => 'color:black;'} %> </li>
       <li class="list-group-item"> <%= link_to 'Sent', sent_messages_path, {:style => 'color:black;'} %> </li>
@@ -23,16 +25,16 @@
           <tr>
             <td> <%= User.find_by_id(inbox_message.sender_id).email %> </td>
             <td> <%= inbox_message.subject %> </td>
-            <td> <%= inbox_message.created_at %> </td>
+            <td> <%= inbox_message.created_at.strftime("%d/%m/%Y %H:%M") %> </td>
             <% if inbox_message.read_at.nil? %>
-              <td> <%= link_to 'Unread', incoming_messages_path(:message_id => inbox_message.id) %> </td>
+              <td> <%= link_to 'Unread', message_path(inbox_message.id) %> </td>
             <% else %>
               <td> <%= inbox_message.read_at.strftime("%d/%m/%Y %H:%M") %> </td>
+              <td> <%= link_to 'View', message_path(inbox_message.id) %> </td>
             <% end %>
           </tr>
         <% end %>
-      </tbody>
-      
+      </tbody>      
     </table>
   </div>
 </div>
