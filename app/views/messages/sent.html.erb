@@ -1,12 +1,5 @@
 <div class="row">
-  <div class="col-4">
-    <p> <%= link_to 'New messages', new_message_path, class: 'btn btn-secondary'  %> </p>
-    <ul class="list-group">
-      <li class="list-group-item"> <%= link_to 'Inbox', incoming_messages_path, {:style => 'color:black;'} %> </li>
-      <li class="list-group-item active"> <%= link_to 'Sent', sent_messages_path, {:style => 'color:black;'} %> </li>
-    </ul>
-  </div>
-  
+  <%= render 'messages/list_group', list_style: 'Sent' %>
   <div class="col-8">
     <h2> Sent </h2>
     
@@ -16,6 +9,7 @@
           <th> To </th>
           <th> Subject </th>
           <th> Time </th>
+          <th> Read at </th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +18,11 @@
             <td> <%= User.find_by_id(sent_message.recipient_id).email %> </td>
             <td> <%= sent_message.subject %> </td>
             <td> <%= sent_message.created_at.strftime("%d/%m/%Y %H:%M") %> </td>
+            <% if Message.find_by_id(sent_message.id).read_at.nil? %>
+              <td> <strong> UNREAD </strong> </td>
+            <% else %>
+              <td> <%= sent_message.read_at.strftime("%d/%m/%Y %H:%M") %> </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

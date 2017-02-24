@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
   before_action :require_signin
+  before_action :read_message, :only => [:show]
+
   def index
   end
 
@@ -13,7 +15,7 @@ class MessagesController < ApplicationController
     @friends = current_user.friend_list_ids
     if @message.save
       flash[:success] = "Your message has been created"
-      redirect_to messages_path
+      redirect_to incoming_messages_path
     else
       flash.now[:error] = @message.errors.full_messages
       render 'new'
@@ -24,7 +26,8 @@ class MessagesController < ApplicationController
   def show
     @message = Message.find(params[:id])
     @message.read_at = Time.now
-    @message.save
+    @message.save  
+    
   end
   
   def incoming

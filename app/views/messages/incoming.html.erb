@@ -1,13 +1,6 @@
-<div class="row">
-  <div class="col-4">
-    <p> <%= link_to 'New messages', new_message_path, class: 'btn btn-secondary'  %> </p>
+<div class="row">  
+  <%= render 'messages/list_group', list_style: 'Incoming' %>
 
-    <ul class="list-group">
-      <li class="list-group-item active"> <%= link_to 'Inbox', incoming_messages_path, {:style => 'color:black;'} %> </li>
-      <li class="list-group-item"> <%= link_to 'Sent', sent_messages_path, {:style => 'color:black;'} %> </li>
-    </ul>
-  </div>
-  
   <div class="col-8">
     <h2> Inbox </h2>
     
@@ -30,7 +23,6 @@
               <td> <%= link_to 'Unread', message_path(inbox_message.id) %> </td>
             <% else %>
               <td> <%= inbox_message.read_at.strftime("%d/%m/%Y %H:%M") %> </td>
-              <td> <%= link_to 'View', message_path(inbox_message.id) %> </td>
             <% end %>
           </tr>
         <% end %>

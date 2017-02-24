@@ -19,4 +19,12 @@ class ApplicationController < ActionController::Base
       redirect_to signin_path
     end
   end
+
+  def read_message
+     unless Message.find_by_id(params[:id]).read_at.nil?
+      flash[:error] = ["Your message is read"]
+      redirect_to incoming_messages_path
+     end
+  end
+
 end
