@@ -1,5 +1,10 @@
 
 <%= form_for @message do |f| %>
+  
+  <div class="form-group"> 
+    <%= f.label :recipient_id %>
+    <%= f.select :recipient_id, @friends.map{|friend| [User.find_by_id(friend).email, friend]}, {}, {class:'form-control'} %>
+  </div>
 
   <div class="form-group">
     <%= f.label :Subject %>
@@ -11,11 +16,12 @@
     <%= f.text_field :content, class:'form-control' %>
   </div>
 
-  <div class="form-group"> 
-    <%= f.label :recipient_id %>
-    <%= f.select :recipient_id, @friends.map{|friend| [User.find_by_id(friend).email, friend]}, {}, {class:'form-control'} %>
+  <div class="form-group">
+    <%= f.label :Image %>
+    <%= f.file_field :image, class:'form-control' %>
   </div>
 
+  
   <%= f.hidden_field :sender_id, :value => current_user.id %>
 
   <%= f.submit 'New message', class:'btn btn-primary' %>

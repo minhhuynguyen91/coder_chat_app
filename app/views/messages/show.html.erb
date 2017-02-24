@@ -8,6 +8,7 @@
       <div class="card-block">
         <h4 class="card-title"><%= @message.subject %> </h4>
         <p class="card-text"> <%= @message.content %> </p>
+        <p class="card-text"> <%= image_tag (@message.image.url(:medium)) %> </p>
         <%= link_to 'Back to Inbox', incoming_messages_path , class:'btn btn-primary'  %>
       </div>
     </div>
