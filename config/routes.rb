@@ -3,12 +3,13 @@ Rails.application.routes.draw do
 
   resources :users do
     collection do
-      get 'add_friend'
-      get 'remove_friend'
-      get 'friends' => 'friendships#index'
+      get 'friends'
     end
   end
-    
+  
+  resources :friendships, :only => [:index, :create]
+  delete 'friendships' => 'friendships#destroy'
+
   resources :messages do
     collection do 
       get 'incoming'

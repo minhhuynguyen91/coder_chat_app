@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_signin, only: [:show, :index]
 
-  def show
-    
+  def show    
   end
 
   def new
@@ -31,7 +30,7 @@ class UsersController < ApplicationController
 
   def add_friend
     current_user.friendships.create(:friend_id => params[:id])
-    current_user.friendships.create(:user_id  => params[:id], :friend_id => current_user.id)
+    #current_user.friendships.create(:user_id  => params[:id], :friend_id => current_user.id)
     redirect_to users_path
   end
 

@@ -1,2 +1,17 @@
-<h1>Friendships#index</h1>
-<p>Find me in app/views/friendships/index.html.erb</p>
+<div class="row">
+  <%= render 'users/list_group', list_style: 'Friends' %>
+  <div class="col-8">
+    <h2> Friends </h2>
+
+    <div class="card-columns" style="font-size: 0.8em; text-align: center">
+    <% @friendship_requests.each do |friend_request| %>
+      <div class="card">  
+        <%= image_tag("http://placehold.it/128?text=?", alt: "text", :class => "card-img-top")%>     
+        <div class="card-block">
+          <div style="word-break: break-word"> <%= User.find_by_id(friend_request.user_id).email %>  </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

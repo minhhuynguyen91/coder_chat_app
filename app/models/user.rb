@@ -11,14 +11,20 @@ class User < ApplicationRecord
     has_many :received_messages, class_name: 'Message', foreign_key: 'recipient_id'
 
     has_many :friendships
-    
+    has_many :friends, :through => :friendships
+
+    has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+    has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+
     def unread_messages
       received_messages.where(read_at: nil)
     end
 
     def is_friend(current_user_id)
-      !Friendship.where(:user_id => current_user_id, :friend_id => self.id).empty?
+      #!Friendship.where(:user_id => current_user_id, :friend_id => self.id).empty?
       #or !Friendship.where(:user_id => self.id, :friend_id => current_user_id).empty?
+      user = User.find_by_id(current_user_id)
+      return !user.friendships.find_by(:friend_id => self.id).nil?
     end
 
     def self.from_omniauth(auth)
