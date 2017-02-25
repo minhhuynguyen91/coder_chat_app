@@ -57,3 +57,6 @@ source 'https://rails-assets.org' do
 end
 
 gem 'paperclip'
+
+gem 'omniauth'
+gem 'omniauth-facebook', '~> 3.0.0'

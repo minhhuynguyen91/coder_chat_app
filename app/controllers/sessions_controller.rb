@@ -19,4 +19,14 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def callback
+    if user = User.from_omniauth(env["omniauth.auth"])
+      # log in user here
+      session[:user_id] = user.id
+      redirect_to root_url
+    else
+      flash.now[:error] = ["Invalid user"]
+    end
+  end
+
 end
