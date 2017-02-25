@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @friends = current_user.friend_list_ids
+    @friends = current_user.friendships
     if @message.save
       flash[:success] = "Your message has been created"
       redirect_to incoming_messages_path

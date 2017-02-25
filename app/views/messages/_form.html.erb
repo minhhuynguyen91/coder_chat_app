@@ -2,8 +2,8 @@
 <%= form_for @message do |f| %>
   
   <div class="form-group"> 
-    <%= f.label :recipient_id %>
-    <%= f.select :recipient_id, @friends.map{|friend| [User.find_by_id(friend.friend_id).email, friend]}, {}, {class:'form-control'} %>
+    <%= f.label :'Recipient email' %>
+    <%= f.select :recipient_id, @friends.map{|friend| [User.find_by_id(friend.friend_id).email, friend.friend_id]}, {}, {class:'form-control'} %>
   </div>
 
   <div class="form-group">
@@ -17,7 +17,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :Image %>
+    <%= f.label :'Image (less than 1MB)'  %>
     <%= f.file_field :image, class:'form-control' %>
   </div>
 

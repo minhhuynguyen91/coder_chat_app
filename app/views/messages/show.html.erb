@@ -1,18 +1,9 @@
-<div class="row">
-  <div class="col-4">
-  </div>
-
-  <div class="col-8">
-    <div class="card">
-      <h3 class="card-header"> Your message </h3>
-      <div class="card-block">
-        <h4 class="card-title"><%= @message.subject %> </h4>
-        <p class="card-text"> <%= @message.content %> </p>
-        <p class="card-text"> <%= image_tag (@message.image.url(:medium)) %> </p>
-        <%= link_to 'Back to Inbox', incoming_messages_path , class:'btn btn-primary'  %>
-      </div>
-    </div>
+<div class="card">
+  <h3 class="card-header"> Your message </h3>
+  <div class="card-block">
+    <h4 class="card-title"><%= @message.subject %> </h4>
+    <p class="card-text"> <%= @message.content %> </p>
+    <p class="card-text"> <%= image_tag (@message.image.url(:medium)) %> </p>
+    <%= link_to 'Back to Inbox', incoming_messages_path , class:'btn btn-primary'  %>
   </div>
 </div>
-
-

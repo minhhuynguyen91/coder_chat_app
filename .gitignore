@@ -12,6 +12,7 @@ ee https://help.github.com/articles/ignoring-files for more about ignoring files
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/public/system/messages
 
 # Ignore Byebug command history file.
 .byebug_history
