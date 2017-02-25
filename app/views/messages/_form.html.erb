@@ -3,7 +3,7 @@
   
   <div class="form-group"> 
     <%= f.label :recipient_id %>
-    <%= f.select :recipient_id, @friends.map{|friend| [User.find_by_id(friend).email, friend]}, {}, {class:'form-control'} %>
+    <%= f.select :recipient_id, @friends.map{|friend| [User.find_by_id(friend.friend_id).email, friend]}, {}, {class:'form-control'} %>
   </div>
 
   <div class="form-group">

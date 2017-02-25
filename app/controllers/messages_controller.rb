@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
-    @friends = current_user.friend_list_ids
+    @friends = current_user.friendships
   end
 
   def create

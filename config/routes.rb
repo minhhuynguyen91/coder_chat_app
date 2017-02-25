@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-
   root 'home_pages#index'
 
   resources :users do
     collection do
       get 'add_friend'
       get 'remove_friend'
-      get 'friends'
+      get 'friends' => 'friendships#index'
     end
   end
     

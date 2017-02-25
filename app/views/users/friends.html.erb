@@ -4,11 +4,11 @@
     <h2> Friends </h2>
 
     <div class="card-columns" style="font-size: 0.8em; text-align: center">
-    <% current_user.friend_list_ids.each do |friend| %>
+    <% current_user.friendships.each do |friend| %>
       <div class="card">  
         <%= image_tag("http://placehold.it/128?text=?", alt: "text", :class => "card-img-top")%>     
         <div class="card-block">
-          <div style="word-break: break-word"> <%= User.find_by_id(friend).email %>  </div>
+          <div style="word-break: break-word"> <%= User.find_by_id(friend.friend_id).email %>  </div>
         </div>
       </div>
     <% end %>

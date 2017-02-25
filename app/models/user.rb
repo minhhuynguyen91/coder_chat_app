@@ -10,8 +10,15 @@ class User < ApplicationRecord
     has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
     has_many :received_messages, class_name: 'Message', foreign_key: 'recipient_id'
 
+    has_many :friendships
+    
     def unread_messages
       received_messages.where(read_at: nil)
+    end
+
+    def is_friend(current_user_id)
+      !Friendship.where(:user_id => current_user_id, :friend_id => self.id).empty?
+      #or !Friendship.where(:user_id => self.id, :friend_id => current_user_id).empty?
     end
 
     def self.from_omniauth(auth)
@@ -19,9 +26,6 @@ class User < ApplicationRecord
       # and figure out how to get email for this user.
       # Note that Facebook sometimes does not return email,
       # in that case you can use facebook-id@facebook.com as a workaround
-
-
-
       email = auth[:info][:email] || "#{auth[:uid]}@facebook.com"
       #Rails.logger.debug "Auth info: #{auth[:info].inspect}"
       #Rails.logger.debug "Auth info: #{auth[:extra][:raw_info].inspect}"

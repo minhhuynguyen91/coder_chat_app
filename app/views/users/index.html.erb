@@ -9,7 +9,8 @@
         <%= image_tag("http://placehold.it/128?text=?", alt: "text", :class => "card-img-top")%>     
         <div class="card-block">
           <div style="word-break: break-word"> <%= user.email %>  </div>
-          <% if current_user.friend_list_ids.include?(user.id) %>
+
+          <% if user.is_friend(current_user.id) %>
             <%= link_to 'Remove', remove_friend_users_path(:id => user.id), class: 'btn btn-danger' %>
           <% else %>
             <%= link_to 'Add', add_friend_users_path(:id => user.id), class: 'btn btn-primary' %>

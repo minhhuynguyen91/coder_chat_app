@@ -30,16 +30,14 @@ class UsersController < ApplicationController
   end
 
   def add_friend
-    user = current_user
-    user.friend_list_ids.push(params[:id].to_i)
-    user.save
+    current_user.friendships.create(:friend_id => params[:id])
+    current_user.friendships.create(:user_id  => params[:id], :friend_id => current_user.id)
     redirect_to users_path
   end
 
   def remove_friend
-    user = current_user
-    user.friend_list_ids = user.friend_list_ids - [params[:id].to_i]
-    user.save
+    current_user.friendships.where(:friend_id => params[:id]).destroy_all    
+    current_user.save
     redirect_to users_path
   end
 
