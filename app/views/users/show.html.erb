@@ -1,2 +1,18 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+
+<div class="card-columns" style="font-size: 0.8em; text-align: center">
+  <% @users.each do |user| %>
+    <div class="card">  
+      <%= image_tag("http://placehold.it/128?text=?", alt: "text", :class => "card-img-top")%>     
+      <div class="card-block">
+        <div style="word-break: break-word"> <%= user.email %>  </div>
+          <% if user.is_block (current_user.id) %>
+            <%= link_to 'Remove', blocklists_path(:block_id => user.id), :method => :delete, class: 'btn btn-danger' %>
+          <% else %>
+            <%= link_to 'Block', blocklists_path(:block_id => user.id), :method => :post, class: 'btn btn-primary' %>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

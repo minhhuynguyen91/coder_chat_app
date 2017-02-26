@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :require_signin, only: [:show, :index]
 
-  def show    
+  def show
+    @users = User.where.not(:id => current_user.id)
   end
 
   def new

@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :friendships, :only => [:index, :create]
   delete 'friendships' => 'friendships#destroy'
 
+  resources :blocklists, :only => [:index, :create]
+  delete 'blocklists' => 'blocklists#destroy'
+
   resources :messages do
     collection do 
       get 'incoming'
