@@ -10,6 +10,30 @@ class MessagesController < ApplicationController
     @friends = current_user.friendships
   end
 
+  def new_group
+    @users = User.where.not(:id => current_user.id)
+  end
+
+  def create_group
+    # Remove empty array element
+    @send_lists = params[:email].split
+    @send_lists = Message.filter_email_group(@send_lists, current_user.id)
+    
+    @send_lists.each do |send_email|
+      @recipient = User.find_by(:email => send_email)
+      @message = Message.new(
+        :subject => params[:subject],
+        :content => params[:content],
+        :sender_id => current_user.id,
+        :image => params[:image],
+        :recipient_id => @recipient.nil? ? 999 : @recipient.id
+      )
+
+      @message.save
+    end
+    redirect_to incoming_messages_path
+  end
+
   def create
     @message = Message.new(message_params)
     @friends = current_user.friendships

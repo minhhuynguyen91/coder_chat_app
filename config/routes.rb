@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     collection do 
       get 'incoming'
       get 'sent'
+      get 'new_group' => 'messages#new_group'
+      post 'new_group' => 'messages#create_group'
     end
   end
 

@@ -1,0 +1,31 @@
+<h2> Create group message </h2>
+
+<div class="row">
+  <div class="col-8"> 
+
+    <%= form_tag new_group_messages_path, method: 'post',  :multipart => true  do %>
+    
+      <div class="form-group">
+        <%= label_tag :'Email (Separated by space)' %>
+        <%= text_field_tag :email, "", class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= label_tag :'Subject' %>
+        <%= text_field_tag :subject, "", class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= label_tag :'Content' %>
+        <%= text_area_tag :content, "", class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= label_tag :'Image' %>
+        <%= file_field_tag :image, class: 'form-control' %>
+      </div>
+
+      <%= submit_tag 'Send group' %>
+    <% end %>
+  </div>
+</div>

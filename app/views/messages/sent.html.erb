@@ -15,7 +15,9 @@
       <tbody>
         <% @sent_messages.each do |sent_message| %>
           <tr>
-            <td> <%= User.find_by_id(sent_message.recipient_id).email %> </td>
+            <% sent_email = User.find_by_id(sent_message.recipient_id) %>
+            <%# <td> <%= User.find_by_id(sent_message.recipient_id).email %> </td>
+            <td> <%= sent_email.nil? ? "UNKNOWN USER" : "#{sent_email.email}" %> </td>
             <td> <%= sent_message.subject %> </td>
             <td> <%= sent_message.created_at.strftime("%d/%m/%Y %H:%M") %> </td>
             <% if Message.find_by_id(sent_message.id).read_at.nil? %>
