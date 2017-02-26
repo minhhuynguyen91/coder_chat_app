@@ -60,3 +60,5 @@ gem 'paperclip'
 
 gem 'omniauth'
 gem 'omniauth-facebook', '~> 3.0.0'
+
+gem 'faker'
