@@ -38,15 +38,15 @@ The following **optional** functionality is complete:
 
 The following **additional** features are implemented:
 
-- [ ] (List anything else that you can get done to improve the app functionality!)
+* NONE
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](relative-path-to-your-gif-file-on-github-or-absolute-path-to-file-on-imgur-or-youtube)
+![Video Walkthrough](https://github.com/minhhuynguyen91/resturant_app/blob/master/demo.gif)
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with [Byzanz](https://linux.die.net/man/1/byzanz-record).
 
 ## Notes
 
