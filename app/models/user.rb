@@ -30,9 +30,9 @@ class User < ApplicationRecord
       return !user.friendships.find_by(:friend_id => self.id).nil?
     end
 
-    def is_block(current_user_id)
+    def is_block(current_user_id, block_id)
       user = User.find_by_id(current_user_id)
-      return !user.blocklists.find_by(:block_id => self.id).nil?
+      return !user.blocklists.find_by(:block_id => block_id).nil?
     end
 
     def self.from_omniauth(auth)

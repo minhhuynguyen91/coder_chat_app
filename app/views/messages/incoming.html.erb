@@ -15,16 +15,18 @@
       </thead>
       <tbody>
         <% @inbox_messages.each do |inbox_message| %>
-          <tr>
-            <td> <%= User.find_by_id(inbox_message.sender_id).email %> </td>
-            <td> <%= inbox_message.subject %> </td>
-            <td> <%= inbox_message.created_at.strftime("%d/%m/%Y %H:%M") %> </td>
-            <% if inbox_message.read_at.nil? %>
-              <td> <%= link_to 'Unread', message_path(inbox_message.id) %> </td>
-            <% else %>
-              <td> <%= inbox_message.read_at.strftime("%d/%m/%Y %H:%M") %> </td>
-            <% end %>
-          </tr>
+          <% unless current_user.is_block(current_user.id, inbox_message.sender_id) %>
+            <tr>
+              <td> <%= User.find_by_id(inbox_message.sender_id).email %> </td>
+              <td> <%= inbox_message.subject %> </td>
+              <td> <%= inbox_message.created_at.strftime("%d/%m/%Y %H:%M") %> </td>
+              <% if inbox_message.read_at.nil? %>
+                <td> <%= link_to 'Unread', message_path(inbox_message.id) %> </td>
+              <% else %>
+                <td> <%= inbox_message.read_at.strftime("%d/%m/%Y %H:%M") %> </td>
+              <% end %>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>      
     </table>
