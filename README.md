@@ -4,9 +4,9 @@
 
 Submitted by: **Nguyen Huy Minh**
 
-Time spent: **X** hours
+Time spent: **30** hours
 
-URL: **Insert your Heroku URL here**
+URL: **https://glacial-basin-10377.herokuapp.com**
 
 ## User Stories
 
@@ -51,6 +51,8 @@ GIF created with [Byzanz](https://linux.die.net/man/1/byzanz-record).
 ## Notes
 
 Describe any challenges encountered while building the app.
+* Bad designing in model. Spend too much time to refactor the source code
+
 
 ## License
 
